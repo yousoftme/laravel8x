@@ -24,6 +24,13 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
 
+Route::get('/github/login', [SocialiteLoginController::class, 'githubLogin'])
+                ->middleware('guest')
+                ->name('github.login');
+                
+Route::get('/auth/callback', [SocialiteLoginController::class, 'githubCallback'])
+                ->middleware('guest');
+
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')
                 ->name('password.request');

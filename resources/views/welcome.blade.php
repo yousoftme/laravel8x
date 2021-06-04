@@ -27,7 +27,6 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
-                        <a href="{{ route('github.login') }}" class="text-sm text-gray-700 underline">Github Login</a>
                         <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline">Log in</a>
 
                         @if (Route::has('register'))

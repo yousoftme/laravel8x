@@ -35,4 +35,10 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => 'http://laravel8x.test/auth/callback',
     ],
+
+    'stripe' => [
+        'model' => App\Models\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
 ];

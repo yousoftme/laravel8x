@@ -33,6 +33,31 @@
             const cardElement = elements.create('card');
 
             cardElement.mount('#card-element');
+
+            const cardHolderName = document.getElementById('card-holder-name');
+            const cardButton = document.getElementById('card-button');
+            const clientSecret = cardButton.dataset.secret;
+            console.log(clientSecret);
+            cardButton.addEventListener('click', async (e) => {
+                console.log(e);
+                const { setupIntent, error } = await stripe.confirmCardSetup(
+                    clientSecret, {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: { name: cardHolderName.value }
+                        }
+                    }
+                );
+                console.log(setupIntent);
+                console.log(error);
+                if (error) {
+                    console.log(error.message);
+                    // Display "error.message" to the user...
+                } else {
+                    console.log('The card has been verified successfully');
+                    // The card has been verified successfully...
+                }
+            });
         </script>
     @endpush
 </x-app-layout>
